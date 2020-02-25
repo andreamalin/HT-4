@@ -1,6 +1,6 @@
 /**********************************************************
-*Calculadora.java			Fecha de creación: 01/01/2020
-*							Última fecha de modificación: 
+*Calculadora.java			Fecha de creacion: 01/01/2020
+*							Ultima fecha de modificación: 01/01/2020
 *							
 *Lleva el control de las operaciones de la interfaz
 *iCalculadora

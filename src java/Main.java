@@ -1,6 +1,6 @@
 /**********************************************************
 *Main.java					Fecha de creacion: 01/01/2020
-*							Ultima fecha de modificación: 24/02/2020
+*							Ultima fecha de modificacion: 24/02/2020
 *							
 *Lleva el control de las operaciones a ejecutar
 *Importa el paquete java.util y el java.io paa exepciones

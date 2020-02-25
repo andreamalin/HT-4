@@ -1,6 +1,6 @@
 /**********************************************************
 *Vector.java				Fecha de creacion: 24/02/2020
-*							Ultima fecha de modificación: 24/02/2020
+*							Ultima fecha de modificacion: 24/02/2020
 *							
 *Interfaz que contiene los metodos que puede usar un Vector
 *
