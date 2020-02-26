@@ -16,6 +16,9 @@ public class Vectors<E> extends Stack<E>{
 	*/
 	protected Vector<E> expresion = new Vector<E>();
 
+	/**
+	 * @param dato  Dato a agregar
+	*/
 	//Post:		Agrega un dato al comienzo del vector
 	public void push(E dato){
 		expresion.add(dato);
@@ -32,12 +35,5 @@ public class Vectors<E> extends Stack<E>{
 	public int size(){
 		return expresion.size();
 	}
-	//Post:		true/false dependiendo si el vector esta vacio
-	public boolean empty(){
-		if (size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+
 }

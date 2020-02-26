@@ -1,89 +1,87 @@
 /**********************************************************
 *DoubleLinkedList<E>.java			Fecha de creación: 23/02/2020
-*							Última fecha de modificación: 
+*						            Última fecha de modificación: 25/02/2020
 *							
 *
 *
 *@author Andrea Amaya #19357
 *@author Carlos Raxtum #19721
 **********************************************************/
-import java.awt.*;
+    /**
+    / Código adaptado de: Bailey, D. A. Java Structures: Data Structures for the Principled Programmer. Capitulo 9.
+    */
+public class DoubleLinkedList<E> extends Lista<E>{
+    protected int tamano;
+    protected DoubleNode<E> cabeza;
+    protected DoubleNode<E> cola;
 
-public class DoubleLinkedList<E> extends ListaAbs<E> {
-
-    private static class Node<E> {
-        private E element;
-        private Node<E> prev;
-        private Node<E> next;
-
-        public Node(E e, Node<E> p, Node<E> n) {
-            element = e;
-            prev = p;
-            next = n;
-        }
-
-        public E getElement() {
-            return element;
-        }
-
-        public Node<E> getPrev() {
-            return prev;
-        }
-
-        public void setPrev(Node<E> prev) {
-            this.prev = prev;
-        }
-
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public void setNext(Node<E> next) {
-            this.next = next;
-        }
-
+    public DoubleLinkedList(){
+       cabeza = null;
+       cola = null;
+       tamano = 0;
     }
+
+  /**
+   * @param valor  Dato a agregar
+  */
+    public void addFirst(E valor){
+       cabeza = new DoubleNode<E>(valor, cabeza, null);
+       // fix cola, if necessary
+       if (cola == null){
+        cola = cabeza;
+        tamano++;
+      }
+    }
+
+    /**
+     * @param valor  Dato a agregar
+    */
     @Override
-    public void addFirst(E e) {
-        addBetween(e, header, header.getNext());
+    public void addLast(E valor)
+    // pre: valor is not null
+    // post: adds new valor to cola of list
+    {
+       // construct new Valor
+       cola = new DoubleNode<E>(valor, null, cola);
+       // fix up cabeza
+       if (cabeza == null) cabeza = cola;
+       tamano++;
     }
-
-
-    @Override
-    public E removeFirst() {
-        if (isEmpty())
-            return null;
-        return remove(header.getNext());
-    }
-
 
     @Override
-    public int size() {
-        return this.size;
+    public E removeLast(){
+       DoubleNode<E> temporal = cola;
+       cola = cola.anterior();
+       if (cola == null) {
+           cabeza = null;
+       } else {
+           cola.setSiguiente(null);
+       }
+       tamano--;
+
+       return temporal.valor();
     }
 
-    private Node<E> header = null;//Referencia
-    private Node<E> trailer = null;
-    private int size = 0;
-    private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
-        Node<E> newest = new Node<>(e, predecessor, successor);
-        predecessor.setNext(newest);
-        successor.setPrev(newest);
-        size++;
+    public int size(){
+      return tamano;
     }
 
-    public DoubleLinkedList() {
-        header = new Node<>(null, null, null);
-        trailer = new Node<>(null, header, null);
-        header.setNext(trailer);
+    @Override
+    public E getLast(){
+        return cola.valor();
     }
 
-    private E remove(Node<E> node) {
-        Node<E> predecessor = node.getPrev( );
-        Node<E> successor = node.getNext( );
-        predecessor.setNext(successor);
-        successor.setPrev(predecessor);
-        size--;
-        return node.getElement( );
+
+    @Override
+    public void push(E dato){
+        addLast(dato);
+    }
+    @Override
+    public E pop(){
+        return removeLast();
+    }
+    @Override
+    public E peek(){
+        return getLast();
     }
 }

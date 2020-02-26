@@ -11,9 +11,13 @@
 import java.util.ArrayList;
 
 public abstract class Stack<E> implements iStack<E>{
-	public abstract void push(E dato);
-	public abstract E pop();
-	public abstract E peek();
-	public abstract int size();
-	public abstract boolean empty();
+
+	//Post:		true/false dependiendo si el vector/arraylist esta vacio
+	public boolean empty(){
+		if (size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

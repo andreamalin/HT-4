@@ -13,9 +13,9 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
-		String txt = "", exepcion; //La operación se meterá a esta variable
+		String txt = "", exepcion=""; //La operación se meterá a esta variable
 		String[] operacion; //Operacion a leer
-		int valor=0, operando1, operando2, stack_escogido; //Espacios para enteros
+		int valor=0, operando1, operando2, stack_escogido=0; //Espacios para enteros
 		boolean pedir = true; //Para revisar enteros
 
 		Factory factory = new Factory();
@@ -31,11 +31,11 @@ public class Main {
 			while (r.hasNextLine()) {
 				txt += (r.nextLine()); //Mientras hayan lineas por leer se meten a la variable txt
 			}
-			operacion = txt.split(" "); //Operacion creada a partir del txt
 			r.close();	
 		} catch (Exception e) { //Se muestra la razon de error por la que no se encuentra el doc
 			e.printStackTrace();
 		}
+		operacion = txt.split(" "); //Operacion creada a partir del txt
 		
 		//Se ordenan los datos
 		System.out.println("_______________________________________\n         ESCOJA EL TIPO DE STACK:          \n_______________________________________\n1. Vector\n2. ArrayList\n3. Listas\nElija la opcion: ");		
@@ -47,14 +47,15 @@ public class Main {
 				if (stack_escogido<=3 && stack_escogido>0) {
 					pedir = false;
 				}
+				System.out.println("Ingrese un numero dentro del rango");
 				
 			} catch (Exception e){
-				System.out.println("Ingrese un numero dentro del rango");
+				System.out.println("Ingrese un numero entero");
 			}
 		}
 		//Si se pidio una lista
 		if (stack_escogido==3) {
-			System.out.println("_______________________________________\n         ESCOJA EL TIPO DE LISTA:          \n_______________________________________\n4. Double List\n5. Sigle List\n6. Circular List\nElija la opcion: ");
+			System.out.println("_______________________________________\n         ESCOJA EL TIPO DE LISTA:          \n_______________________________________\n4. Double List\n5. Single List\n6. Circular List\nElija la opcion: ");
 			pedir = true; //Se vuelve a revisar que se ingrese un entero dentro del rango
 			while(pedir){
 				String lista = scan.next();
@@ -63,8 +64,9 @@ public class Main {
 					if (stack_escogido<=6 && stack_escogido>3) {
 						pedir = false;
 					}
-				} catch (Exception e){
 					System.out.println("Ingrese un numero dentro del rango");
+				} catch (Exception e){
+					System.out.println("Ingrese un numero entero");
 				}
 			}	
 		} 
@@ -113,7 +115,7 @@ public class Main {
 		}
 
 		//Se muestra el resultado
-		if (exepcion == null) {
+		if (!exepcion.equalsIgnoreCase("")) {
 			System.out.println("_______________________________________\n         El archivo no es legible de forma correcta          \n_______________________________________");	
 			System.out.println(exepcion);	
 		} else {

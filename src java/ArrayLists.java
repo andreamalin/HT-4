@@ -32,12 +32,4 @@ public class ArrayLists<E> extends Stack<E>{
 	public int size(){
 		return expresion.size();
 	}
-	//Post:		true/false dependiendo si el arraylist esta vacio
-	public boolean empty(){
-		if (size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }
