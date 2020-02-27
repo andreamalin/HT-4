@@ -46,8 +46,10 @@ public class Main {
 				stack_escogido = Integer.parseInt(stack);
 				if (stack_escogido<=3 && stack_escogido>0) {
 					pedir = false;
+				} else {
+					System.out.println("Ingrese un numero dentro del rango");
 				}
-				System.out.println("Ingrese un numero dentro del rango");
+				
 				
 			} catch (Exception e){
 				System.out.println("Ingrese un numero entero");
@@ -63,8 +65,10 @@ public class Main {
 					stack_escogido =Integer.parseInt(lista);
 					if (stack_escogido<=6 && stack_escogido>3) {
 						pedir = false;
+					} else {
+						System.out.println("Ingrese un numero dentro del rango");
 					}
-					System.out.println("Ingrese un numero dentro del rango");
+					
 				} catch (Exception e){
 					System.out.println("Ingrese un numero entero");
 				}
@@ -116,8 +120,8 @@ public class Main {
 
 		//Se muestra el resultado
 		if (!exepcion.equalsIgnoreCase("")) {
-			System.out.println("_______________________________________\n         El archivo no es legible de forma correcta          \n_______________________________________");	
-			System.out.println(exepcion);	
+			System.out.println("_______________________________________\nEl archivo no es legible de forma correcta");	
+			System.out.println("       "+exepcion+"\n_______________________________________");	
 		} else {
 			System.out.println("_______________________________________\n          EL RESULTADO ES: " + stackElegido.peek() + "\n_______________________________________");
 		}	
